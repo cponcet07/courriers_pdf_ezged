@@ -1,0 +1,42 @@
+#editable-text {
+    width: 70%;
+    height: 800px;
+    min-height: 300px;
+    overflow-y: auto;
+    resize: vertical;
+    padding: 10px;
+    box-sizing: border-box;
+    line-height: 1.5;
+    margin : auto;                
+}
+#editable-text div {
+    margin: 0;
+    padding: 0;
+}
+
+#info-table-container {
+    width: 70%;
+    overflow-y: auto;
+    resize: vertical;
+    padding: 10px;
+    box-sizing: border-box;
+    margin : auto;
+    line-height: 1.5;
+}
+
+.custom-editable-text {
+    width: 100%; /* Ajustez cette valeur pour modifier la largeur de la zone de saisie */
+    margin: 0 auto;
+}
+.objet,.mail,.tel {
+    width: 300px; /* ajuste la valeur selon tes besoins */
+    margin : auto;
+}
+.border {
+    border: 2px solid #939597 !important;
+}
+.info-table-container {
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 10px;
+    }
