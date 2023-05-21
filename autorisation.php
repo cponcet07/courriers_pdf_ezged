@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <?php
 require 'connexion.php';
 
@@ -42,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="password">Mot de passe :</label>
         <input type="password" name="password" id="password" required>
 
-        <button type="submit">Ajouter</button>
+        <button type="submit" class="btn btn-danger">Ajouter</button>
     </form>
 </body>
 </html>

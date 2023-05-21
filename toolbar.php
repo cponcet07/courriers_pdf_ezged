@@ -18,16 +18,7 @@
             <i class="fas fa-image"></i>
         </button>
         <input type="file" id="image-input" accept="image/*" style="display:none;" onchange="insertImage()">
-        <div class="input-group mr-2">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="font">Police :</label>
-            </div>
-            <select class="custom-select" id="font" onchange="font()">
-                <option value="Arial">Arial</option>
-                <option value="Times New Roman">Times New Roman</option>
-                <option value="Courier New">Courier New</option>
-            </select>
-        </div>
+
         <div class="input-group mr-2">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="fontSize">Taille :</label>

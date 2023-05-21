@@ -75,11 +75,6 @@ function underline() {
 function italic() {
   surroundSelection('em');
 }
-// Fonction pour changer la police du texte sélectionné
-function font() {
-  var font = document.getElementById("font").value;
-  surroundSelection('span', 'font-family: ' + font + ';');
-}
 // Fonction pour changer la taille de la police du texte sélectionné
 function changeFontSize() {
   var fontSizeSelect = document.getElementById("fontSize");
