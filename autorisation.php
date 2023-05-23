@@ -1,7 +1,17 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="icon" type="image/x-icon" href="ressources/logo.ico" />
+
 <?php
 require 'connexion.php';
+// Démarrer la session
+session_start();
 
+// Vérifier si l'utilisateur est connecté
+if (!isset($_SESSION['user_logged_in'])) {
+    // Rediriger vers connexion.php
+    header('Location: login.php');
+    exit;
+}
 // Récupérer la liste des utilisateurs
 $query = "SELECT secusr_id, secusr_login FROM _secusr";
 $stmt = $pdo->prepare($query);
@@ -30,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Ajouter un mot de passe utilisateur</title>
 </head>
-<body>
+<body style="margin-left : 20px;">
     <h1>Ajouter un mot de passe utilisateur</h1>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <label for="user">Utilisateur :</label>
@@ -47,3 +57,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 </body>
 </html>
+

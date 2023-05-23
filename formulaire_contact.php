@@ -1,5 +1,19 @@
 <?php
 
+include 'connexion.php';
+
+$sql = 'SELECT * FROM modele_courriers_specif';
+$result = $pdo->query($sql);
+
+$modeles = array();
+while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    $modeles[] = $row;
+}
+
+// Convertir les données en JSON et les stocker dans une variable PHP
+$modeles_json = json_encode($modeles);
+
+
 // Récupérer les destinataires
 $expediteurs_query = $pdo->query("SELECT CAP_CONTACT_LIB FROM cap_contact");
 $expediteurs = $expediteurs_query->fetchAll(PDO::FETCH_ASSOC);
@@ -40,6 +54,7 @@ $destinataires = $destinataires_query->fetchAll(PDO::FETCH_ASSOC);
                 </select>
             </div>
         </div>
+        
         <div class="col-md-6 form-group text-center">
             <div class="d-flex justify-content-center">
                 <input type="text" class="form-control mail" id="mail" name="mail" placeholder="Saisissez le mail">
@@ -47,15 +62,15 @@ $destinataires = $destinataires_query->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 form-group text-center">
-            <div class="d-flex justify-content-center">
-                <select class="form-control" id="modele" name="modele" style="width : 300px;">
-                    <option value="">Sélectionnez un modèle de courrier</option>
-                    <option value="fermeture_route">Demande de fermeture de route</option>
-                    <!-- Ajoutez autant d'options que nécessaire pour vos modèles -->
-                    </select>
-            </div>
+    <div class="col-md-6 form-group text-center">
+        <div class="d-flex justify-content-center">
+            <select class="form-control" id="modele" name="modele" style="width : 300px;">
+                <option value="">Sélectionnez un modèle de courrier</option>
+            </select>
         </div>
+    </div>
+
+
         <div class="col-md-6 form-group text-center">
             <div class="d-flex justify-content-center">
                 <input type="text" class="form-control tel" id="tel" name="tel" placeholder="Saisissez le N° de tel">
@@ -74,8 +89,33 @@ $destinataires = $destinataires_query->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+<script>
+// Récupérez les données JSON et convertissez-les en objet JavaScript
+var modelesData = <?php echo $modeles_json; ?>;
+var modeles = {};
 
+$(document).ready(function() {
+  var select = $('#modele');
+  $.each(modelesData, function(i, modele) {
+    modeles[modele.MODELE_COURRIERS_SPECIF_ID] = modele.MODELE_COURRIERS_SPECIF_CONTENT; // stockage du contenu du modèle
+    select.append($('<option>', {
+      value: modele.MODELE_COURRIERS_SPECIF_ID,
+      text: modele.MODELE_COURRIERS_SPECIF_LIB
+    }));
+  });
+});
+
+function chargerModele() {
+  var modeleId = $('#modele').val(); // Récupère l'ID du modèle sélectionné
+  var contenu = modeles[modeleId]; // Récupère le contenu du modèle
+  if (contenu) {
+      // Met à jour la zone d'édition avec le contenu du modèle
+      $('#editable-text').html(contenu);
+  } else {
+      // Si aucun modèle n'est sélectionné, efface la zone d'édition
+      $('#editable-text').html('');
+  }
+}
+</script>

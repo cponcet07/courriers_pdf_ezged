@@ -1,4 +1,5 @@
 
+<link rel="icon" type="image/x-icon" href="ressources/logo.ico" />
 
 <?php 
 // Démarrer la session

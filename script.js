@@ -263,20 +263,4 @@ document.getElementById('generate-pdf-form').addEventListener('submit', function
   }
 });
 
-var modeles = {
-  'fermeture_route': 'Cher destinataire, \n\nNous vous informons que la route sera fermée pour travaux à partir de...',
-  // Ajoutez autant de modèles que nécessaire
-};
 
-
-function chargerModele() {
-  var modele = $('#modele').val(); // Récupère le modèle sélectionné
-  var contenu = modeles[modele]; // Récupère le contenu du modèle
-  if (contenu) {
-      // Met à jour la zone d'édition avec le contenu du modèle
-      $('#editable-text').html(contenu);
-  } else {
-      // Si aucun modèle n'est sélectionné, efface la zone d'édition
-      $('#editable-text').html('');
-  }
-}
