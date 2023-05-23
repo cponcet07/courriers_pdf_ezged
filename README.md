@@ -7,3 +7,5 @@ Cette solution a pour but de permettre la création de courreirs au format PDF p
 doc contient la doc
 
 tcpdf contient la bibliothéque pour générer le pdf final
+
+sql contient le script de creation + insertions des tables utilisés et nécessaires
