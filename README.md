@@ -4,4 +4,6 @@ Applications en PHP et JS réalisé dans le cadre de mon alternance chez CAP BUR
 
 Cette solution a pour but de permettre la création de courreirs au format PDF pour pouvoir les envoyer dans la GED.
 
+doc contient la doc
 
+tcpdf contient la bibliothéque pour générer le pdf final
